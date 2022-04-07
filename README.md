@@ -1,0 +1,3 @@
+# RichReport
+
+Generate Report easily.

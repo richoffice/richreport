@@ -3,7 +3,7 @@
         {
             "key": "workhours",
             "aliases": [
-                "sheet1"
+                "Sheet1", "sheet1"
             ],
             "fields": [
                 {

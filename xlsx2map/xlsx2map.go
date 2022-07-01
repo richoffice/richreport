@@ -15,6 +15,7 @@ type Options struct {
 func Marshal(outFilePath string, input interface{}, def *XlsxFileDef) error {
 
 	f := excelize.NewFile()
+
 	if data, ok := input.(map[string][]map[string]interface{}); ok {
 		// fmt.Println("map[string]map[string]interface{}")
 		for _, sheetDef := range def.SheetDefs {

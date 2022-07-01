@@ -1,8 +1,6 @@
 package richreport
 
 import (
-	"time"
-
 	"github.com/go-gota/gota/dataframe"
 	"github.com/richoffice/richreport/xlsx2map"
 )
@@ -29,9 +27,4 @@ func StoreDataFrames(frames map[string]dataframe.DataFrame, outExcelFile, excelD
 	}
 
 	return xlsx2map.ExportToFile(data, outExcelFile, excelDefFile, opts)
-}
-
-//2022-05-09 08:02:00 +0000 UTC
-func ParseDate(dataStr string) (time.Time, error) {
-	return time.Parse("2006-01-02 15:04:05 -0700 UTC", dataStr)
 }

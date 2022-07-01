@@ -3,6 +3,8 @@ package richreport
 import (
 	"fmt"
 	"testing"
+
+	"github.com/richoffice/richreport/utils"
 )
 
 func TestLoadDataFrames(t *testing.T) {
@@ -29,11 +31,17 @@ func TestLoadDateDataFrames(t *testing.T) {
 
 	fmt.Println(frame.Col("dueDispatchTime").Records())
 
-	create, err := ParseDate(frame.Col("dueDispatchTime").Records()[0])
+	create, err := utils.ParseDate(frame.Col("dueDispatchTime").Records()[0])
 	if err != nil {
 		t.Errorf("expected no error, but got %v", err)
 	}
 	fmt.Println(create)
+
+	err = StoreDataFrames(got, "xlsx2map/testfiles/dateout.xlsx", "xlsx2map/testfiles/wh-def.json", nil)
+	if err != nil {
+		t.Errorf("StoreDataFrames() error = %v, want no error", err)
+		return
+	}
 
 	// fmt.Println(got)
 

@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/richoffice/richreport/utils"
 	"github.com/xuri/excelize/v2"
 )
 
@@ -39,7 +40,30 @@ func Marshal(outFilePath string, input interface{}, def *XlsxFileDef) error {
 					if columnErr != nil {
 						return columnErr
 					}
-					f.SetCellValue(sheetDef.GetTitle(), columnName+strconv.Itoa(i+2), rowData[fieldDef.Key])
+
+					value := rowData[fieldDef.Key]
+					if value == nil {
+						value = ""
+					} else {
+						if fieldDef.DataType == "ExcelDate" {
+							if v, ok := value.(string); ok {
+								if v == "" {
+									value = ""
+								} else {
+									date, err := utils.ParseDate(v)
+									if err != nil {
+										value = err
+									} else {
+										value = date
+									}
+								}
+							} else {
+								value = fmt.Errorf("not a string ojbect: %v", v)
+							}
+						}
+					}
+
+					f.SetCellValue(sheetDef.GetTitle(), columnName+strconv.Itoa(i+2), value)
 				}
 
 			}

@@ -2,7 +2,7 @@ package richreport
 
 import (
 	"github.com/go-gota/gota/dataframe"
-	"github.com/rocksun/xlsx2map"
+	"github.com/richoffice/richreport/xlsx2map"
 )
 
 func LoadDataFrames(excelFile, excelDefFile string, options *xlsx2map.Options) (map[string]dataframe.DataFrame, error) {

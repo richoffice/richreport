@@ -1,0 +1,17 @@
+{
+    "defs":{
+        "inputs":[
+            {
+                "key": "sample1",
+                "def": "./sample_def.json"
+            }
+        ],
+
+        "outputs":[
+            {
+                "key": "sample1",
+                "def": "./sample_def.json"
+            }
+        ]
+    }
+}
